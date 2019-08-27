@@ -39,9 +39,10 @@ public class CarsController {
     }
 
 //    @PatchMapping("/{id}")
-//    public Car updateOneCar(@PathVariable Long id, @RequestBody Car updatedCar) {
-//        Car car = carsRepository.findById(id).get();
-//        return carsRepository.save(car);
+//    public Car updateOneCar(@PathVariable Long id, @RequestBody Car car) {
+//        Car updatedCar = carsRepository.findById(id).get();
+//        carsRepository.save(car);
+//        return updatedCar;
 //    }
 
     @DeleteMapping("/{id}")
