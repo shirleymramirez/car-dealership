@@ -31,17 +31,17 @@ public class CarsController {
         return allCars;
     }
 
-//    @PatchMapping("cars/{id}")
-//    public Car updateCar(@PathVariable Long id, @RequestBody Car updateCar) {
-//        Car car = carsRepository.findOne(id);
-//    }
+    // Update existing status
+    // Make sure to send ENTIRE status, not just pieces of it
+    @PatchMapping
+    public Car updateOneCar(@RequestBody Car updatedCar) {
+        return carsRepository.save(updatedCar);
+    }
 
-//    @DeleteMapping("cars/{id}")
-//    public Map<String, Object> deleteCar(@PathVariable Long id) {
-//        carsRepository.delete(id);
-//
-//        HashMap<String, Object> result = new HashMap<>();
-//        result.put("count", carsRepository.count());
-//        return result;
-//    }
+    @DeleteMapping("cars/{id}")
+    public Car deleteOneCar(@PathVariable Long id) {
+        Car removedCar = carsRepository.findById(id).get();
+        carsRepository.deleteById(id);
+        return removedCar;
+    }
 }

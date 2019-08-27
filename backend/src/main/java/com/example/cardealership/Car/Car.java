@@ -37,4 +37,7 @@ public class Car {
     @Column
     private int location_id;
 
+    public void delete(Car car) {
+
+    }
 }
