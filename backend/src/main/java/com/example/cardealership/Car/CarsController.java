@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/cars")
 public class CarsController {
 
     @Autowired
@@ -18,13 +18,13 @@ public class CarsController {
         this.carsRepository = carsRepository;
     }
 
-    @PostMapping("cars")
+    @PostMapping
     public Car addOneCar(@RequestBody Car car) {
         System.out.println(car);
         return carsRepository.save(car);
     }
 
-    @GetMapping("cars")
+    @GetMapping
     public Map<String, Iterable<Car>> getAllCars() {
         HashMap<String, Iterable<Car>> allCars = new HashMap<>();
         allCars.put("cars", this.carsRepository.findAll());
@@ -38,7 +38,13 @@ public class CarsController {
         return carsRepository.save(updatedCar);
     }
 
-    @DeleteMapping("cars/{id}")
+//    @PatchMapping("/{id}")
+//    public Car updateOneCar(@PathVariable Long id, @RequestBody Car updatedCar) {
+//        Car car = carsRepository.findById(id).get();
+//        return carsRepository.save(car);
+//    }
+
+    @DeleteMapping("/{id}")
     public Car deleteOneCar(@PathVariable Long id) {
         Car removedCar = carsRepository.findById(id).get();
         carsRepository.deleteById(id);

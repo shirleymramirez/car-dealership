@@ -1,5 +1,6 @@
 package com.example.cardealership.Car;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -37,7 +38,4 @@ public class Car {
     @Column
     private int location_id;
 
-    public void delete(Car car) {
-
-    }
 }
