@@ -1,7 +1,11 @@
 package com.example.cardealership.Car;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.example.cardealership.Location.Location;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -12,7 +16,7 @@ public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long car_id;
 
     @Column
     private String vin;
@@ -37,5 +41,17 @@ public class Car {
 
     @Column
     private int location_id;
+
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Location.class)
+    @JoinColumn(name = "location_id", insertable = false, updatable = false)
+    private Location location;
+
+    public Location getLocation() {
+        return this.location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 
 }

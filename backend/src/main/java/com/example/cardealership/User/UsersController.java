@@ -1,14 +1,12 @@
 package com.example.cardealership.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/")
 public class UsersController {
 
@@ -20,7 +18,7 @@ public class UsersController {
     }
 
     @PostMapping("users")
-    public User addOneLocation(@RequestBody User user) {
+    public User addOneUser(@RequestBody User user) {
         System.out.println(user);
         return usersRepository.save(user);
     }

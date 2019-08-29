@@ -1,7 +1,6 @@
 package com.example.cardealership.Location;
 
 import lombok.Data;
-import lombok.Generated;
 
 import javax.persistence.*;
 
@@ -12,7 +11,7 @@ public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long location_id;
 
     @Column
     private String name;
