@@ -15,18 +15,8 @@ export default (state = initialState, action ) => {
                 cars: action.payload
             }
         case types.FETCH_A_CAR:
-            // const car = {};
-            // action.payload.forEach(car => {
-            //     if (car[car.car_id]) {
-            //         car[car.car_id].push(car)
-            //     } else {
-            //         car[car.car_id] = []
-            //         car[car.car_id].push(car)
-            //     }
-            // });
             return {
                 ...state,
-                // cars: car
                 car: action.payload
             }
         case types.POST_CAR:

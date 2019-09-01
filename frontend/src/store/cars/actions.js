@@ -3,7 +3,7 @@ import * as types from './constants'
 // get all cars route: /cars
 export const fetchCars = () => {
     return async dispatch => {
-        const response = await fetch('http://localhost:8080/cars')
+        const response = await fetch(`${types.BASE_URL}/cars`)
         const json = await response.json()
         console.log(json)
         dispatch({
@@ -16,7 +16,7 @@ export const fetchCars = () => {
 // cars new page route: cars/:car_id
 export const fetchOneCar = (car_id) => {
     return async dispatch => {
-        const response = await fetch(`http://localhost:8080/cars/${car_id}`)
+        const response = await fetch(`${types.BASE_URL}/cars/${car_id}`)
         console.log(response);
         const json = await response.json();
         console.log(json)
@@ -30,7 +30,7 @@ export const fetchOneCar = (car_id) => {
 // cars edit route: /cars/:car_id/edit
 export const postNewCar = (data) => {
     return async dispatch => {
-        const response = await fetch('http://localhost:8080/cars', {
+        const response = await fetch(`${types.BASE_URL}/cars`, {
             method: 'POST',
             body: JSON.stringify({
                 vin: data.vin,
