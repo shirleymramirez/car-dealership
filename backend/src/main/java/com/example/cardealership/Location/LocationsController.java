@@ -31,11 +31,23 @@ public class LocationsController {
         return allLocation;
     }
 
+//    @PatchMapping("/{id}")
+//    public Location updateOneLocation(@PathVariable long id, @RequestBody Location location) {
+//        Location updateLocation = locationsRepository.findById(id).get();
+//        locationsRepository.save(location);
+//        return updateLocation;
+//    }
+
     @PatchMapping("/{id}")
     public Location updateOneLocation(@PathVariable long id, @RequestBody Location location) {
         Location updateLocation = locationsRepository.findById(id).get();
-        locationsRepository.save(location);
-        return updateLocation;
+        if(location.getName() != null) {
+            updateLocation.setName(location.getName());
+        }
+        if(location.getAddress() != null) {
+            updateLocation.setAddress(location.getAddress());
+        }
+        return locationsRepository.save(updateLocation);
     }
 
     @DeleteMapping("/{id}")

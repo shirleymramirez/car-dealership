@@ -28,11 +28,6 @@ function TopNav() {
                         <NavItem>
                             <NavLink href="/users/login">Login</NavLink>
                         </NavItem>
-                        {/* <NavItem>
-                            <NavLink href="https://github.com/reactstrap/reactstrap">
-                                GitHub
-                            </NavLink>
-                        </NavItem> */}
                     </Nav>
                 </Collapse>
             </Navbar>

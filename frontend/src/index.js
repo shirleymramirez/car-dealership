@@ -7,10 +7,17 @@ import * as serviceWorker from './serviceWorker';
 
 import { Provider } from 'react-redux';
 import store from './store';
+import { createBrowserHistory } from "history";
+
+import { Router } from "react-router";
+const history = createBrowserHistory();
 
 ReactDOM.render(
     <Provider store={store}>
-        <App /> 
+        {/* to get match to remember url path */}
+        <Router history={history}>
+            <App /> 
+        </Router>
     </Provider>,
 document.getElementById('root'));
 
