@@ -3,6 +3,14 @@ import { connect } from 'react-redux';
 import { fetchCars } from '../../store/cars/actions'
 import Car from './Car';
 
+const mainContainer = {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginLeft: '70px',
+    marginTop: '40px'
+}
+
 class CarLists extends Component {
 
     componentDidMount() {
@@ -11,7 +19,7 @@ class CarLists extends Component {
 
     render() {
         return (
-            <div>
+            <div style={mainContainer}>
                 {Object.values(this.props.cars.cars).map(car => {
                     return (
                         <Car key={car.car_id} {...car}/>

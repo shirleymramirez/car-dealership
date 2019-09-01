@@ -3,9 +3,6 @@ import { Card, CardImg, CardTitle, CardSubtitle, CardBody } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const CardGroupStyle = {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
     width: '400px',
     height: '400px',
     margin: '15px'
