@@ -38,8 +38,8 @@ public class CarsController {
 
     // Update existing status
     // Make sure to send ENTIRE status, not just pieces of it
-    @PatchMapping("/{id}")
-        public Car updateOneLocation(@PathVariable long id, @RequestBody Car car) {
+    @PatchMapping("/{id}/edit")
+        public Car updateOneCar(@PathVariable long id, @RequestBody Car car) {
             Car updateCar= carsRepository.findById(id).get();
             if(car.getVin() != null) {
                 updateCar.setVin(car.getVin());

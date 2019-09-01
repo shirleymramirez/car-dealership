@@ -19,7 +19,7 @@ export default (state = initialState, action ) => {
                 ...state,
                 car: action.payload
             }
-        case types.POST_CAR:
+        case types.POST_A_CAR:
             return {
                 ...state,
                 cars: state.cars.concat([
@@ -28,7 +28,14 @@ export default (state = initialState, action ) => {
                     }
                 ])
             }
-    
+        case types.DELETE_A_CAR:
+            return {
+                ...state,
+                cars: state.cars.filter(car => car.id !== action.id)
+            };
+        case types.EDIT_A_CAR:
+            return state.cars.map((car) => car.car_id === action.id ? 
+            { ...car, editing: !car.editin } : car )
         default:
             return state;
     }

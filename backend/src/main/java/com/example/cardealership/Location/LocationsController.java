@@ -31,6 +31,13 @@ public class LocationsController {
         return allLocation;
     }
 
+    @GetMapping("/{id}")
+    public Location getOneLocation(@PathVariable Long id) {
+        Location getLocationById = locationsRepository.findById(id).get();
+        locationsRepository.getOne(id);
+        return getLocationById;
+    }
+
 //    @PatchMapping("/{id}")
 //    public Location updateOneLocation(@PathVariable long id, @RequestBody Location location) {
 //        Location updateLocation = locationsRepository.findById(id).get();
@@ -38,7 +45,7 @@ public class LocationsController {
 //        return updateLocation;
 //    }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/edit/{id}")
     public Location updateOneLocation(@PathVariable long id, @RequestBody Location location) {
         Location updateLocation = locationsRepository.findById(id).get();
         if(location.getName() != null) {

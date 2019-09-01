@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchOneCar } from '../../store/cars/actions';
+import { fetchOneCar, editACar } from '../../store/cars/actions';
 import { withRouter } from "react-router";
 import { CardImg, Container, Row, Col } from 'reactstrap';
 import IosPin from 'react-ionicons/lib/IosPin';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const mainContainer = {
     marginTop: '100px',
@@ -71,6 +72,7 @@ class CarInfo extends Component {
                                     {location.address}
                                 </div>
                                 <div style={label}>Dealership: {location.name}</div>
+                                <Link to={`/cars/edit/${this.props.match.params.car_id}`}>Edit Info</Link>
                             </div>
                         }
                     </div>

@@ -26,15 +26,15 @@ public class User {
     @Column
     private long car_id;
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Car.class)
-    @JoinColumn(name = "car_id", insertable = false, updatable = false)
-    private Car car;
-
-    public Car getCar() {
-        return this.car;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
-    }
+////    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Car.class)
+////    @JoinColumn(name = "car_id", insertable = false, updatable = false)
+////    private Car car;
+//
+//    public Car getCar() {
+//        return this.car;
+//    }
+//
+//    public void setCar(Car car) {
+//        this.car = car;
+//    }
 }
