@@ -5,10 +5,10 @@ import IosTrash from 'react-ionicons/lib/IosTrash';
 import { deleteACar } from '../../store/cars/actions'
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
+import IosOpen from 'react-ionicons/lib/IosOpen'
 
 const CardGroupStyle = {
-    width: '400px',
-    height: '400px',
+    height: 'auto',
     margin: '15px'
 }
 
@@ -48,6 +48,9 @@ class Car extends Component {
                         <Button style={deleteButton} onClick={this.deleteACar}>
                             <IosTrash fontSize="20px" color="red" />
                         </Button>
+                        <Link to={`/cars/edit/${this.props.car_id}`}>
+                            <IosOpen fontSize="20px" color="blue" />
+                        </Link>
                     </div>
                 </CardBody>
             </Card>

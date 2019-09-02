@@ -34,7 +34,7 @@ export default (state = initialState, action ) => {
                 cars: state.cars.filter(car => car.id !== action.id)
             };
         case types.EDIT_A_CAR:
-            return state.cars.map((car) => car.car_id === action.id ? 
+            return state.cars.map((car) => car.id === action.id ? 
             { ...car, editing: !car.editin } : car )
         default:
             return state;

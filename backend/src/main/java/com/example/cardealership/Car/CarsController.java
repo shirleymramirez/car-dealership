@@ -18,7 +18,7 @@ public class CarsController {
         this.carsRepository = carsRepository;
     }
 
-    @PostMapping
+    @PostMapping("/new")
     public Car addOneCar(@RequestBody Car car) {
         System.out.println(car);
         return carsRepository.save(car);
@@ -38,7 +38,7 @@ public class CarsController {
 
     // Update existing status
     // Make sure to send ENTIRE status, not just pieces of it
-    @PatchMapping("/{id}/edit")
+    @PatchMapping("/{id}")
         public Car updateOneCar(@PathVariable long id, @RequestBody Car car) {
             Car updateCar= carsRepository.findById(id).get();
             if(car.getVin() != null) {

@@ -36,6 +36,11 @@ class CarEditForm extends Component {
         editing: false
     }
 
+    componentDidMount() {
+        // got data through match.params(history)
+        this.props.editACar(this.props.match.params.car_id, this.state);
+    }
+
     userEditing = () => {
         this.setState({
             editing: true
@@ -46,7 +51,7 @@ class CarEditForm extends Component {
         this.setState({
             editing: false
         })
-        this.props.editACar(this.props.match.params.car_id, this.state)
+        this.props.editACar(this.props.props.car_id, this.state)
     }
 
     handleChange = e => {
@@ -58,7 +63,7 @@ class CarEditForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        this.props.editACar(this.props.match.params.car_id, this.state)
+        this.props.editACar(this.props.car_id, this.state)
         this.setState({
             vin: "",
             year: "",
@@ -205,9 +210,8 @@ class CarEditForm extends Component {
 }
 
 const mapStateToProps = state => {
-    debugger;
     return {
-        cars: state.cars
+        car: state.cars
     }
 }
 

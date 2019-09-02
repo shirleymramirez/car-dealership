@@ -4,11 +4,13 @@ import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 import authReducer from './auth/reducer'
 import carReducer from './cars/reducers'
+import locationReducer from './locations/reducers'
 
 //import reducers...
 const rootReducer = combineReducers({
     auth: authReducer,
-    cars: carReducer
+    cars: carReducer,
+    locations: locationReducer
 })
 
 const middleware = [thunk, logger]

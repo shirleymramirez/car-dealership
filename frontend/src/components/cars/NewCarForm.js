@@ -6,7 +6,7 @@ import { postNewCar } from '../../store/cars/actions';
 import { withRouter } from "react-router";
 import IosCar from 'react-ionicons/lib/IosCar';
 
-const title = {
+const newCarTitleFormTitle = {
     marginTop: '20px',
     textAlign: 'center'
 }
@@ -61,10 +61,11 @@ class NewCarForm extends Component {
     render() {
         return (
             <div>
-                <h1 style={title}>
+                <h1 style={newCarTitleFormTitle}>
                     <IosCar fontSize="40px" color="black" />
                     Add A New Car
-                    <IosCar fontSize="40px" color="black" /></h1>
+                    <IosCar fontSize="40px" color="black" />
+                </h1>
                 <div style={mainContainer}>
                     <Form style={formStyles} onSubmit={this.handleSubmit}>
                         <FormGroup row>

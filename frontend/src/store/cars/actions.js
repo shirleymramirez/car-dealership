@@ -30,7 +30,7 @@ export const fetchOneCar = (car_id) => {
 // add a new car 
 export const postNewCar = (data) => {
     return async dispatch => {
-        const response = await fetch(`${types.BASE_URL}/cars`, {
+        const response = await fetch(`${types.BASE_URL}/cars/new`, {
             method: 'POST',
             body: JSON.stringify({
                 vin: data.vin,
@@ -81,6 +81,7 @@ export const editACar = (car_id, data) => {
     debugger;
     return async dispatch => {
         const response = await fetch(`${types.BASE_URL}/cars/edit/${car_id}`, {
+            mode: 'cors',
             method: 'PATCH',
             body: JSON.stringify({
                 vin: data.vin,
@@ -95,7 +96,8 @@ export const editACar = (car_id, data) => {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
-            }
+            },
+
         })
         console.log(response);
         const newlyEdittedCarData = await response.json()

@@ -29,15 +29,15 @@ class CarLists extends Component {
             <div>
                 <h1 style={title}>
                     <IosCar fontSize="40px" color="black" />
-                    List of Cars
+                        List of Cars
                     <IosCar fontSize="40px" color="black" />
                     </h1>
                     <div style={mainContainer}>
-                    {Object.values(this.props.cars.cars).map(car => {
+                         {Object.values(this.props.cars.cars).map(car => {
                             return (
                                 <Car key={car.car_id} {...car}/>
                             )
-                        })}
+                         })}
                     </div>
             </div>
         )
