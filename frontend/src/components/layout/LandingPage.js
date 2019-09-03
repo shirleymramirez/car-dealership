@@ -16,25 +16,32 @@ const titlePage = {
 const mainContainer = {
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: '100px'
+    marginTop: '100px',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around'
 }
 
 const buttonHeaderCars = {
-    width: '300px',
+    width: '200px',
     backgroundColor: '#F5AE1F',
     borderRadius: '20px',
-    borderStyle: 'none'
+    borderStyle: 'none',
+    padding: '5px',
+    boxShadow: '10px 10px 5px grey',
 }
 
 const buttonHeaderLocation = {
-    width: '300px',
+    width: '200px',
     backgroundColor: '#71D8F4',
     borderRadius: '20px',
     borderStyle: 'none',
+    padding: '5px',
+    boxShadow: '10px 10px 5px grey',
 }
 
 const header6 = {
-    paddingTop: '5px'
+    paddingTop: '5px',
 }
 
 const LandingPage = (props) => {

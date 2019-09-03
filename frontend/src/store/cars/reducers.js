@@ -35,7 +35,12 @@ export default (state = initialState, action ) => {
             };
         case types.EDIT_A_CAR:
             return state.cars.map((car) => car.id === action.id ? 
-            { ...car, editing: !car.editin } : car )
+            { ...car, editing: !car.editing } : car )
+        case types.FETCH_CARS_BY_LOCATION:
+            return {
+                ...state,
+                cars: action.payload
+            }
         default:
             return state;
     }

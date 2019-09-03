@@ -38,7 +38,7 @@ class CarEditForm extends Component {
 
     componentDidMount() {
         // got data through match.params(history)
-        this.props.editACar(this.props.match.params.car_id, this.state);
+        this.props.editACar(this.props.match.params.car_id, this.props.match.params);
     }
 
     userEditing = () => {
@@ -51,7 +51,7 @@ class CarEditForm extends Component {
         this.setState({
             editing: false
         })
-        this.props.editACar(this.props.props.car_id, this.state)
+        this.props.editACar(this.props.car_id, this.state)
     }
 
     handleChange = e => {
@@ -94,7 +94,7 @@ class CarEditForm extends Component {
                                         type="text"
                                         name="vin"
                                         placeholder="Enter Vin Number"
-                                        value={this.state.vin}
+                                        value={this.props.vin}
                                         onChange={this.handleChange}
                                         onBlur={this.userDoneEditing}
                                         required
@@ -108,7 +108,7 @@ class CarEditForm extends Component {
                                         type="text"
                                         name="year"
                                         placeholder="Enter Year Manufactured"
-                                        value={this.state.year}
+                                        value={this.props.year}
                                         onChange={this.handleChange}
                                         onBlur={this.userDoneEditing}
                                         required
@@ -122,7 +122,7 @@ class CarEditForm extends Component {
                                         type="text"
                                         name="make"
                                         placeholder="Enter Manufacturer"
-                                        value={this.state.make}
+                                        value={this.props.make}
                                         onChange={this.handleChange}
                                         onBlur={this.userDoneEditing}
                                         required
@@ -136,7 +136,7 @@ class CarEditForm extends Component {
                                         type="text"
                                         name="model"
                                         placeholder="Enter Model"
-                                        value={this.state.model}
+                                        value={this.props.model}
                                         onChange={this.handleChange}
                                         onBlur={this.userDoneEditing}
                                         required
@@ -150,7 +150,7 @@ class CarEditForm extends Component {
                                         type="text"
                                         name="miles"
                                         placeholder="Enter Mileage"
-                                        value={this.state.miles}
+                                        value={this.props.miles}
                                         onChange={this.handleChange}
                                         onBlur={this.userDoneEditing}
                                         required
@@ -164,7 +164,7 @@ class CarEditForm extends Component {
                                         type="text"
                                         name="price"
                                         placeholder="Enter Price"
-                                        value={this.state.price}
+                                        value={this.props.price}
                                         onChange={this.handleChange}
                                         onBlur={this.userDoneEditing}
                                         required
@@ -178,7 +178,7 @@ class CarEditForm extends Component {
                                         type="text"
                                         name="photo_url"
                                         placeholder="Enter Picture Link"
-                                        value={this.state.photo_url}
+                                        value={this.props.photo_url}
                                         onChange={this.handleChange}
                                         onBlur={this.userDoneEditing}
                                         required
@@ -192,7 +192,7 @@ class CarEditForm extends Component {
                                         type="number"
                                         name="location_id"
                                         placeholder="Enter Location Id"
-                                        value={this.state.location_id}
+                                        value={this.props.location_id}
                                         onChange={this.handleChange}
                                         onBlur={this.userDoneEditing}
                                         required
@@ -211,7 +211,7 @@ class CarEditForm extends Component {
 
 const mapStateToProps = state => {
     return {
-        car: state.cars
+        car: state.cars.car
     }
 }
 

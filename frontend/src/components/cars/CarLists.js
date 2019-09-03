@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { fetchCars } from '../../store/cars/actions'
 import Car from './Car';
 import IosCar from 'react-ionicons/lib/IosCar';
+import IosAddCircleOutline from 'react-ionicons/lib/IosAddCircleOutline';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const title = {
     marginTop: '20px',
@@ -28,12 +30,17 @@ class CarLists extends Component {
         return (
             <div>
                 <h1 style={title}>
-                    <IosCar fontSize="40px" color="black" />
-                        List of Cars
-                    <IosCar fontSize="40px" color="black" />
-                    </h1>
+                    <div>
+                        <IosCar beat={true} fontSize="40px" color="black" />
+                            List of Cars
+                        <IosCar beat={true} fontSize="40px" color="black" />
+                        <Link to="/cars/new">
+                            <IosAddCircleOutline fontSize="40px" color="black" />
+                        </Link>
+                    </div>
+                </h1>
                     <div style={mainContainer}>
-                         {Object.values(this.props.cars.cars).map(car => {
+                         {Object.values(this.props.cars).map(car => {
                             return (
                                 <Car key={car.car_id} {...car}/>
                             )
@@ -48,7 +55,7 @@ class CarLists extends Component {
 const mapStateToProps = state => {
     // console.log(state)
     return {
-        cars: state.cars
+        cars: state.cars.cars
     }
 }
 

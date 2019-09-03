@@ -36,19 +36,19 @@ class Car extends Component {
     }
 
     render() {
+        const { photo_url, model, make, year, car_id } = this.props;
         return (
             <Card style={CardGroupStyle}>
-                <CardImg top width="100%" style={imgStyle} src={this.props.photo_url} alt="Card image cap" />
+                <CardImg top width="100%" style={imgStyle} src={photo_url} alt="Card image cap" />
                 <CardBody>
-                    <CardTitle>{this.props.make}{' '}{this.props.model}</CardTitle>
-                    <CardSubtitle>Year: {this.props.year}</CardSubtitle>
+                    <CardTitle>{make}{' '}{model}</CardTitle>
+                    <CardSubtitle>Year: {year}</CardSubtitle>
                     <div style={buttonCardStyle}>
-                        <Link to='/locations/:locations_id'>Check Location</Link>
-                        <Link to={`/cars/${this.props.car_id}`}>See Full Details</Link>
+                        <Link to={`/cars/${car_id}`}>See Full Details</Link>
                         <Button style={deleteButton} onClick={this.deleteACar}>
                             <IosTrash fontSize="20px" color="red" />
                         </Button>
-                        <Link to={`/cars/edit/${this.props.car_id}`}>
+                        <Link to={`/cars/edit/${car_id}`}>
                             <IosOpen fontSize="20px" color="blue" />
                         </Link>
                     </div>

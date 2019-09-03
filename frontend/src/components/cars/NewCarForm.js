@@ -16,7 +16,8 @@ const mainContainer = {
     margin: 'auto',
     padding: '20px',
     marginTop: '40px',
-    backgroundColor: '#F5F6F6'
+    backgroundColor: '#F5F6F6',
+    boxShadow: '8px 8px 3px grey'
 }
 
 const formStyles = {
@@ -62,9 +63,9 @@ class NewCarForm extends Component {
         return (
             <div>
                 <h1 style={newCarTitleFormTitle}>
-                    <IosCar fontSize="40px" color="black" />
+                    <IosCar beat={true} fontSize="40px" color="black" />
                     Add A New Car
-                    <IosCar fontSize="40px" color="black" />
+                    <IosCar beat={true} fontSize="40px" color="black" />
                 </h1>
                 <div style={mainContainer}>
                     <Form style={formStyles} onSubmit={this.handleSubmit}>

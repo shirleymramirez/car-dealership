@@ -108,3 +108,21 @@ export const editACar = (car_id, data) => {
         })
     }
 }
+
+
+// get all cars by location
+export const fetchCarsByLocation = (location_id) => {
+    return async dispatch => {
+        const response = await fetch(`${types.BASE_URL}/cars`)
+        const json = await response.json()
+        debugger;
+        console.log(json)
+        console.log(location_id);
+        const filteredByLocation = json.filter(location => location.location_id == location_id)
+        console.log(filteredByLocation)
+        dispatch({
+            type: types.FETCH_CARS_BY_LOCATION,
+            payload: filteredByLocation
+        })
+    }
+} 

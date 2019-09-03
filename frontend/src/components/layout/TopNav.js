@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import IosCar from 'react-ionicons/lib/IosCar';
-import IosAddCircleOutline from 'react-ionicons/lib/IosAddCircleOutline';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav } from 'reactstrap'
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavLink, NavItem } from 'reactstrap'
 
 
 function TopNav() {
@@ -16,17 +14,14 @@ function TopNav() {
         <div>
             <Navbar color="primary" dark expand="md">
                 <NavbarBrand href="/">
-                    <IosCar fontSize="40px" color="white" />
+                    <IosCar shake={true} fontSize="40px" color="white" />
                     {' '}Car Inventory</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="ml-auto" navbar>
-                        <Link to="/cars/new">
-                            <IosAddCircleOutline fontSize="40px" color="white" />
-                        </Link>
-                        {/* <NavItem>
+                        <NavItem>
                             <NavLink href="/users/login">Login</NavLink>
-                        </NavItem> */}
+                        </NavItem>
                     </Nav>
                 </Collapse>
             </Navbar>

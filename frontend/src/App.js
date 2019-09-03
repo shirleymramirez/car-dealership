@@ -9,7 +9,8 @@ import CarInfo from './components/cars/CarInfo'
 import NewCarForm from './components/cars/NewCarForm'
 import CarEditForm from './components/cars/CarEditForm'
 import LocationLists from './components/locations/LocationLists'
-import Location from './components/locations/Location'
+import LocationInfo from './components/locations/LocationInfo'
+import NewLocationForm from './components/locations/NewLocationForm'
 
 function App() {
   return (
@@ -18,13 +19,14 @@ function App() {
         <TopNav />
         <Switch>
           <Route exact path="/" component={LandingPage} />
-          <Route exact path="/cars" component={CarLists} />
           <Route path="/users/login" component={Login} />
+          <Route exact path="/cars" component={CarLists} />
           <Route exact path="/cars/new" component={NewCarForm} />
           <Route exact path="/cars/:car_id" component={CarInfo} />
           <Route exact path="/cars/edit/:car_id" component={CarEditForm} />
           <Route exact path="/locations" component={LocationLists} />
-          <Route exact path="/locations/:location_id" component={Location} />
+          <Route exact path="/locations/new" component={NewLocationForm} />
+          <Route exact path="/locations/:location_id" component={LocationInfo} />
           <Route path="*" render={() => <div>Not found</div>} />
         </Switch>
       </div>

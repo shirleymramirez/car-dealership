@@ -4,11 +4,13 @@ import { fetchOneCar } from '../../store/cars/actions';
 import { withRouter } from "react-router";
 import { CardImg, Container, Row, Col } from 'reactstrap';
 import IosPin from 'react-ionicons/lib/IosPin';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const mainContainer = {
     marginTop: '100px',
     backgroundColor: '#F5F6F6',
-    padding: '20px'
+    padding: '20px',
+    boxShadow: '8px 8px 3px grey',
 }
 
 const locationStyle = {
@@ -35,7 +37,7 @@ class CarInfo extends Component {
         this.props.fetchOneCar(this.props.match.params.car_id);
     }
     render() {
-        const { photo_url, model, year, make, vin, miles, price, location } = this.props.car;
+        const { photo_url, model, year, make, vin, miles, price, location, location_id } = this.props.car;
         let dollarAmount = parseInt(price).toFixed(2);
 
     return (
@@ -57,7 +59,9 @@ class CarInfo extends Component {
                             <div>
                                 <div style={label}>
                                     <IosPin fontSize="20px" color="blue" />
-                                    {location.address}
+                                        <Link to={`/locations/${location_id}`}>
+                                            {location.address}
+                                        </Link>
                                 </div>
                                 <div style={label}>Dealership: {location.name}</div>
                             </div>
