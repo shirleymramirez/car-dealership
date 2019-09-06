@@ -106,3 +106,33 @@ The base goals of this project will create a basic vehicle inventory management 
 - As a user, when I click the add button, it takes me to a form that allows me to add a location to the list.
 - As a user, I am able to remove a location from this list by clicking the delete button next to the location.
 - As a user, I can click the edit button to take me to a form that will let me edit the location.
+
+
+## UI 
+
+### LandingPage
+![Screen Shot 2019-09-06 at 1 29 37 PM](https://user-images.githubusercontent.com/31137669/64458546-7d7ef200-d0aa-11e9-995f-1011751f8706.png)
+
+### CarLists
+![Screen Shot 2019-09-06 at 1 31 45 PM](https://user-images.githubusercontent.com/31137669/64458640-bcad4300-d0aa-11e9-84df-642c6a75c692.png)
+--Can Delete a car from the list  
+
+### Individual Car Details
+![Screen Shot 2019-09-06 at 1 33 30 PM](https://user-images.githubusercontent.com/31137669/64458707-e9615a80-d0aa-11e9-9151-44bc61f43b1c.png)
+
+### Add a new Car
+![Screen Shot 2019-09-06 at 1 34 20 PM](https://user-images.githubusercontent.com/31137669/64458760-085fec80-d0ab-11e9-97f8-f03fdc01cb66.png)
+
+### Lists of all Dealership
+![Screen Shot 2019-09-06 at 1 36 03 PM](https://user-images.githubusercontent.com/31137669/64458846-49580100-d0ab-11e9-9ef8-4690b55594be.png)
+
+### List of Cars in each Dealership
+![Screen Shot 2019-09-06 at 1 37 12 PM](https://user-images.githubusercontent.com/31137669/64458895-6ee50a80-d0ab-11e9-9561-d15cbd03b793.png)
+
+### Form to Add a New Dealership
+![Screen Shot 2019-09-06 at 1 38 02 PM](https://user-images.githubusercontent.com/31137669/64458941-8a501580-d0ab-11e9-937b-e3a1100f0431.png)
+
+
+
+
+
