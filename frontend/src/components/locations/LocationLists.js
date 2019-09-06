@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import IosCar from 'react-ionicons/lib/IosCar';
-import { Table } from 'reactstrap';
+import { Table, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import { fetchLocations } from '../../store/locations/actions'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import IosAddCircleOutline from 'react-ionicons/lib/IosAddCircleOutline';
+import { deleteALocation } from '../../store/locations/actions';
+import { withRouter } from "react-router";
+import IosTrash from 'react-ionicons/lib/IosTrash';
+import IosOpen from 'react-ionicons/lib/IosOpen'
 
 const locationListTitle = {
     marginTop: '20px',
@@ -21,19 +25,40 @@ const locationListTable = {
     boxShadow: '8px 8px 3px grey'
 }
 
+const deleteButton = {
+    backgroundColor: 'white',
+    border: 'none'
+}
+
 class LocationLists extends Component {
 
     componentDidMount() {
         this.props.fetchLocations();
     }
 
+    deleteALoc = e => {
+        e.preventDefault()
+        debugger;
+        this.props.deleteALocation(this.props.location.location_id)
+    }
+
     render() {
         // console.log(this.props.locations);
         const locationsData = this.props.locations.map(location => {
                 return <tr key={location.location_id}>
-                        <td><Link to={`/locations/${location.location_id}`}>{location.location_id}</Link></td>
+                        {/* <td><Link to={`/locations/${location.location_id}`}>{location.location_id}</Link></td> */}
                         <td><Link to={`/locations/${location.location_id}`}>{location.name}</Link></td>
                         <td><Link to={`/locations/${location.location_id}`}>{location.address}</Link></td>
+                        <td>
+                            <Button style={deleteButton} onClick={this.deleteALoc}>
+                                <IosTrash fontSize="20px" color="red" />
+                            </Button>
+                        </td>
+                        <td>
+                            <Button >
+                                <IosOpen fontSize="20px" color="blue" />
+                            </Button>
+                        </td>
                     </tr>
         })
 
@@ -52,9 +77,11 @@ class LocationLists extends Component {
                     <Table>
                         <thead>
                             <tr>
-                                <th>LOCATION ID</th>
+                                {/* <th>LOCATION ID</th> */}
                                 <th>NAME</th>
                                 <th>ADDRESS</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -80,8 +107,14 @@ const mapDispatchToProps = dispatch => {
             dispatch(
                 fetchLocations()
             )
+        },
+        deleteALocation: (location_id) => {
+            debugger;
+            dispatch(
+                deleteALocation(location_id)
+            )
         }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LocationLists);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LocationLists));

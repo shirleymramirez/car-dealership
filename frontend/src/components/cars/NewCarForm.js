@@ -33,7 +33,8 @@ class NewCarForm extends Component {
         miles: "",
         price: "",
         photo_url: "",
-        location_id: ""
+        location_id: "",
+        fireRedirect: false
     }
 
     handleChange = e => {
@@ -48,6 +49,7 @@ class NewCarForm extends Component {
         this.props.postNewCar(this.state)
         // to clear input field after submission
         this.setState({
+            fireRedirect: true,
             vin: "",
             year: "",
             make: "",
@@ -55,11 +57,12 @@ class NewCarForm extends Component {
             miles: "",
             price: "",
             photo_url: "",
-            location_id: "" 
+            location_id: ""
         })
     }
 
     render() {
+        console.log(this.props);
         return (
             <div>
                 <h1 style={newCarTitleFormTitle}>
@@ -175,6 +178,7 @@ class NewCarForm extends Component {
                         </FormGroup>
                         <Button type="submit" color="primary">Submit</Button>
                     </Form>
+                    {this.state.fireRedirect && this.props.history.push("/cars")}
                 </div>
             </div>
         )

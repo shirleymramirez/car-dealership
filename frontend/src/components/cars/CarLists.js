@@ -11,6 +11,10 @@ const title = {
     textAlign: 'center'
 }
 
+const mainListContainer = {
+    height: '100vh'
+}
+
 const mainContainer = {
     display: 'flex',
     flexDirection: 'row',
@@ -28,7 +32,7 @@ class CarLists extends Component {
 
     render() {
         return (
-            <div>
+            <div style={mainListContainer}>
                 <h1 style={title}>
                     <div>
                         <IosCar beat={true} fontSize="40px" color="black" />
@@ -42,7 +46,9 @@ class CarLists extends Component {
                     <div style={mainContainer}>
                          {Object.values(this.props.cars).map(car => {
                             return (
-                                <Car key={car.car_id} {...car}/>
+                                <div>
+                                    <Car key={car.car_id} {...car}/>
+                                 </div>   
                             )
                          })}
                     </div>

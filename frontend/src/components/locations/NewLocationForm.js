@@ -26,7 +26,8 @@ const formStyles = {
 class NewLocation extends Component {
     state = {
         address: "",
-        name: ""
+        name: "",
+        fireRedirect: 'false'
     }
 
     handleChange = e => {
@@ -40,8 +41,9 @@ class NewLocation extends Component {
         this.props.postNewLocation(this.state)
         // to clear input field after submission
         this.setState({
+            fireRedirect: 'true',
             name: "",
-            address: ""
+            address: "",
         })
     }
 
@@ -83,6 +85,7 @@ class NewLocation extends Component {
                         </FormGroup>
                         <Button type="submit" color="primary">Submit</Button>
                     </Form>
+                    {/* {this.state.fireRedirect && this.props.history.push("/locations")} */}
                 </div>
             </div>
         )

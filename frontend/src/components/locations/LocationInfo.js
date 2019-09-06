@@ -49,7 +49,6 @@ class LocationInfo extends Component {
 
 const mapStateToProps = state => {
     console.log(state);
-    debugger;
     return {
         location: state.locations.location,
         cars: state.cars.cars

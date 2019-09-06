@@ -52,4 +52,23 @@ export const postNewLocation = (data) => {
     }
 } 
 
+// delete a location
+export const deleteALocation = (location_id) => {
+    return async dispatch => {
+        const response = await fetch(`${types.BASE_URL}/locations/${location_id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+        const newLocationData = await response.json()
+        console.log(newLocationData);
+        dispatch({
+            type: types.DELETE_A_LOCATION,
+            payload: newLocationData
+        })
+    }
+}
+
 

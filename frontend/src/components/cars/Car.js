@@ -28,11 +28,16 @@ const deleteButton = {
 }
   
 class Car extends Component {
+    state = {
+        fireRedirect: false
+    }
 
     deleteACar = e => {
         e.preventDefault()
-        debugger;
         this.props.deleteACar(this.props.car_id)
+        this.setState({
+            fireRedirect: true
+        })
     }
 
     render() {

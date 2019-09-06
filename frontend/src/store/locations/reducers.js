@@ -28,6 +28,11 @@ export default (state = initialState, action) => {
                     }
                 ])
             }
+        case types.DELETE_A_LOCATION:
+            return {
+                ...state,
+                locations: state.locations.filter(loc => loc.id !== action.id)
+            }
         default:
             return state;
     }

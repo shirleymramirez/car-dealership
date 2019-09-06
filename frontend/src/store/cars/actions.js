@@ -78,7 +78,6 @@ export const deleteACar = (car_id) => {
 
 // edit a car information
 export const editACar = (car_id, data) => {
-    debugger;
     return async dispatch => {
         const response = await fetch(`${types.BASE_URL}/cars/edit/${car_id}`, {
             mode: 'cors',
@@ -115,7 +114,6 @@ export const fetchCarsByLocation = (location_id) => {
     return async dispatch => {
         const response = await fetch(`${types.BASE_URL}/cars`)
         const json = await response.json()
-        debugger;
         console.log(json)
         console.log(location_id);
         const filteredByLocation = json.filter(location => location.location_id == location_id)

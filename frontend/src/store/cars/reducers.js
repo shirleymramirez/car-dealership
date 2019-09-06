@@ -34,8 +34,12 @@ export default (state = initialState, action ) => {
                 cars: state.cars.filter(car => car.id !== action.id)
             };
         case types.EDIT_A_CAR:
-            return state.cars.map((car) => car.id === action.id ? 
-            { ...car, editing: !car.editing } : car )
+            console.log(action.payload)
+            return {
+                ...state,
+                car: action.payload
+            }
+
         case types.FETCH_CARS_BY_LOCATION:
             return {
                 ...state,
