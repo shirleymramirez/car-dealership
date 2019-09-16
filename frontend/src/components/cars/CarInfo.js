@@ -38,7 +38,7 @@ class CarInfo extends Component {
     }
     render() {
         const { photo_url, model, year, make, vin, miles, price, location, location_id } = this.props.car;
-        let dollarAmount = parseInt(price).toFixed(2);
+        let dollarAmount = parseInt(price).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
     return (
         <Container style={mainContainer}>

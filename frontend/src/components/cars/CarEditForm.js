@@ -54,7 +54,7 @@ class CarEditForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        this.props.editACar(this.props.car[0].car_id, this.state.carToUpdate)
+        this.props.editACar(this.props.car.car_id, this.state.carToUpdate)
         this.setState({
             fireRedirect: true,
             vin: "",
@@ -203,4 +203,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CarEditForm));
-// export default connect(null, mapDispatchToProps)(CarEditForm);
