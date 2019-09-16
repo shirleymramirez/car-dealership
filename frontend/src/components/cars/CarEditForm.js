@@ -25,63 +25,40 @@ const formStyles = {
 
 class CarEditForm extends Component {
     state = {
-        vin: this.props.car.car_id,
-        year: this.props.car.year,
-        make: this.props.car.make,
-        model: this.props.car.model,
-        miles: this.props.car.miles,
-        price: this.props.car.price,
-        photo_url: this.props.car.photo_url,
-        location_id: this.props.location_id,
         editing: false,
-        car:[]
-    }
+        carToUpdate: {
+            vin: this.props.car[0].vin,
+            year: this.props.car[0].year,
+            make: this.props.car[0].make,
+            model: this.props.car[0].model,
+            miles: this.props.car[0].miles,
+            price: this.props.car[0].price,
+            photo_url: this.props.car[0].photo_url,
+            location_id: this.props.car[0].location_id
+        }
+     }
 
     componentDidMount() {
         this.props.editACar(this.props.match.params.car_id, this.props);
     }
 
     handleChange = e => {
-        this.setState({
-            editACar: !this.state.editing,
-            [e.target.name]: e.target.value
-        })
+        let newCar = this.state.carToUpdate;
+        newCar[e.target.name] = e.target.value;
+        this.setState(prevState => ({
+            ...prevState,
+            carToUpdate: newCar
+        }))
     }
-
-    // handleChange = e => {
-    //     e.preventDefault();
-    //     const newBody = e.target.value;
-    //     const myName = e.target.name;
-
-    //     // debugger;
-    //     this.setState(prevState => {
-    //         return {
-    //             car: prevState.car.map(car => {
-    //                 if (car.editing) {
-    //                     return {
-    //                         ...car,
-    //                         [myName]: newBody
-    //                     }
-    //                 } else {
-    //                     return { ...car }
-    //                 }
-    //             })
-    //         }
-    //     })
-    // }
 
     handleSubmit = e => {
         e.preventDefault()
-        this.props.editACar(this.props.car_id, this.props)
+        this.props.editACar(this.props.car[0].car_id, this.state.carToUpdate)
     }
 
     render() {
-        const carItems = this.props.car.filter(item => {
-            return item.car_id == this.props.match.params.car_id
-        });
-    
-        console.log(carItems[0].vin);
-
+        console.log(this.props.car)
+        console.log(this.props.car[0].vin)
 
         return (
             <div>
@@ -98,10 +75,9 @@ class CarEditForm extends Component {
                                         type="text"
                                         name="vin"
                                         placeholder="Enter Vin Number"
-                                        value={carItems[0].vin}
+                                        value={this.state.carToUpdate.vin}
                                         onChange={this.handleChange}
                                         onBlur={this.userDoneEditing} required />
-                                         {/* : <>{this.state.vin}</> */}
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -111,10 +87,9 @@ class CarEditForm extends Component {
                                         type="text"
                                         name="year"
                                         placeholder="Enter Year Manufactured"
-                                        value={carItems[0].year}
+                                        value={this.state.carToUpdate.year}
                                         onChange={this.handleChange}
                                         onBlur={this.userDoneEditing} required /> 
-                                        {/* : <>{this.state.year}</> */}
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -124,10 +99,9 @@ class CarEditForm extends Component {
                                         type="text"
                                         name="make"
                                         placeholder="Enter Manufacturer"
-                                        value={carItems[0].make}
+                                        value={this.state.carToUpdate.make}
                                         onChange={this.handleChange}
                                         onBlur={this.userDoneEditing} required /> 
-                                        {/* : <>{this.state.make}</> */}
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -137,10 +111,9 @@ class CarEditForm extends Component {
                                         type="text"
                                         name="model"
                                         placeholder="Enter Model"
-                                        value={carItems[0].model}
+                                        value={this.state.carToUpdate.model}
                                         onChange={this.handleChange}
                                         onBlur={this.userDoneEditing} required />
-                                         {/* : <>{this.state.model}</> */}
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -150,10 +123,9 @@ class CarEditForm extends Component {
                                         type="text"
                                         name="miles"
                                         placeholder="Enter Mileage"
-                                        value={carItems[0].miles}
+                                        value={this.state.carToUpdate.miles}
                                         onChange={this.handleChange}
                                         onBlur={this.userDoneEditing} required />
-                                         {/* : <>{this.state.photo_url}</> */}
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -163,10 +135,9 @@ class CarEditForm extends Component {
                                         type="text"
                                         name="price"
                                         placeholder="Enter Price"
-                                        value={carItems[0].price}
+                                        value={this.state.carToUpdate.price}
                                         onChange={this.handleChange}
                                         onBlur={this.userDoneEditing} required />
-                                         {/* : <>{this.state.price}</> */}
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -176,10 +147,9 @@ class CarEditForm extends Component {
                                         type="text"
                                         name="photo_url"
                                         placeholder="Enter Picture Link"
-                                        value={carItems[0].photo_url}
+                                        value={this.state.carToUpdate.photo_url}
                                         onChange={this.handleChange}
                                         onBlur={this.userDoneEditing} required/> 
-                                        {/* : <>{this.state.photo_url}</> */}
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -189,10 +159,9 @@ class CarEditForm extends Component {
                                         type="number"
                                         name="location_id"
                                         placeholder="Enter Location Id"
-                                        value={carItems[0].location_id}
+                                        value={this.state.carToUpdate.location_id}
                                         onChange={this.handleChange}
                                         onBlur={this.userDoneEditing} required />
-                                         {/* : <>{this.state.location_id}</> */}
                                 </Col>
                             </FormGroup>
                             <Button type="submit" color="primary">Submit</Button>
@@ -221,3 +190,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CarEditForm));
+// export default connect(null, mapDispatchToProps)(CarEditForm);

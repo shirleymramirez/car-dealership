@@ -34,10 +34,13 @@ export default (state = initialState, action ) => {
                 cars: state.cars.filter(car => car.id !== action.id)
             };
         case types.EDIT_A_CAR:
-            console.log(action.payload)
             return {
                 ...state,
-                car: action.payload
+                cars: state.cars.filter(car => {
+                    if (car.car_id === action.payload.car_id) {
+                        return action.payload;
+                    }
+                })
             }
 
         case types.FETCH_CARS_BY_LOCATION:
