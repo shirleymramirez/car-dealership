@@ -71,4 +71,26 @@ export const deleteALocation = (location_id) => {
     }
 }
 
-
+export const editALocation = (location_id, data) => {
+    return async dispatch => {
+        const response = await fetch(`${types.BASE_URL}/locations/edit/${location_id}`, {
+            mode: 'cors',
+            method: 'PATCH',
+            body: JSON.stringify({
+                address: data.address,
+                name: data.name
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+        })
+        console.log(response);
+        const newlyEdittedLocationData = await response.json()
+        console.log(newlyEdittedLocationData);
+        dispatch({
+            type: types.EDIT_A_LOCATION,
+            payload: newlyEdittedLocationData
+        })
+    }
+}

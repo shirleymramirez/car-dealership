@@ -55,9 +55,9 @@ class LocationLists extends Component {
                             </Button>
                         </td>
                         <td>
-                            <Button >
+                            <Link to={`/locations/edit/${location.location_id}`}>
                                 <IosOpen fontSize="20px" color="blue" />
-                            </Button>
+                            </Link>
                         </td>
                     </tr>
         })

@@ -11,6 +11,7 @@ import CarEditForm from './components/cars/CarEditForm'
 import LocationLists from './components/locations/LocationLists'
 import LocationInfo from './components/locations/LocationInfo'
 import NewLocationForm from './components/locations/NewLocationForm'
+import LocationEditForm from './components/locations/LocationEditForm'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route exact path="/locations" component={LocationLists} />
           <Route exact path="/locations/new" component={NewLocationForm} />
           <Route exact path="/locations/:location_id" component={LocationInfo} />
+          <Route exact path="/locations/edit/:location_id" component={LocationEditForm} />
           <Route path="*" render={() => <div>Not found</div>} />
         </Switch>
       </div>

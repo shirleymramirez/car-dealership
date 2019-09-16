@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'; 
-import { postNewLocation } from '../../store/locations/actions';
 import IosCar from 'react-ionicons/lib/IosCar';
 import { Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import IosFlower from 'react-ionicons/lib/IosFlower';
+import { connect } from 'react-redux';
+import { editALocation } from '../../store/locations/actions';
+import { withRouter } from "react-router";
+
 
 const newLocTitleFormTitle = {
     marginTop: '20px',
@@ -23,36 +25,45 @@ const formStyles = {
     margin: 'auto'
 }
 
-class NewLocation extends Component {
+class LocationEditForm extends Component {
     state = {
-        address: "",
-        name: "",
+        locationToUpdate: {
+            name: this.props.location.name,
+            address: this.props.location.address,
+        },
         fireRedirect: false
     }
 
-    handleChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+    componentDidMount() {
+        this.props.editALocation(this.props.match.params.location_id, this.props);
     }
+
+    handleChange = e => {
+        let newLocation = this.state.locationToUpdate;
+        newLocation[e.target.name] = e.target.value;
+        this.setState(prevState => ({
+            ...prevState,
+            locationToUpdate: newLocation
+        }))
+    }
+
 
     handleSubmit = e => {
         e.preventDefault()
-        this.props.postNewLocation(this.state)
-        // to clear input field after submission
+        this.props.editALocation(this.props.location.location_id, this.state.locationToUpdate)
         this.setState({
             fireRedirect: true,
-            name: "",
             address: "",
+            name: ""
         })
     }
 
     render() {
         return (
-            <div> 
+            <div>
                 <h1 style={newLocTitleFormTitle}>
                     <IosCar beat={true} fontSize="40px" color="black" />
-                        Add A New Location
+                    Edit Location Details
                     <IosCar beat={true} fontSize="40px" color="black" />
                 </h1>
                 <div style={mainContainer}>
@@ -64,7 +75,7 @@ class NewLocation extends Component {
                                     type="text"
                                     name="name"
                                     placeholder="Enter Dealership Name"
-                                    value={this.state.name}
+                                    value={this.state.locationToUpdate.name}
                                     onChange={this.handleChange}
                                     required
                                 />
@@ -77,7 +88,7 @@ class NewLocation extends Component {
                                     type="text"
                                     name="address"
                                     placeholder="Dealership Address"
-                                    value={this.state.address}
+                                    value={this.state.locationToUpdate.address}
                                     onChange={this.handleChange}
                                     required
                                 />
@@ -93,20 +104,22 @@ class NewLocation extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state.locations.locations)
     return {
-        locations: state.locations
+        location: state.locations.locations[0]
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        postNewLocation: (data) => {
+        editALocation: (location_id, data) => {
             dispatch(
-                postNewLocation(data)
-            );
+                editALocation(location_id, data)
+            )
         }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewLocation);
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LocationEditForm));
 

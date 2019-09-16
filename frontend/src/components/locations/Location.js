@@ -34,6 +34,7 @@ class Location extends Component {
 
     render() {
         const { photo_url, model, make, year, car_id } = this.props;
+        console.log(this.props)
         return (
             <div>
                 <Card style={CardGroupStyle}>

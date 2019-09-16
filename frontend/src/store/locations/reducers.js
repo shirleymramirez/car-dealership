@@ -3,7 +3,7 @@ import * as types from './constants'
 const initialState = {
     locations: [],
     err: {},
-    location: []
+    location: {}
 }
 
 export default (state = initialState, action) => {
@@ -32,6 +32,15 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 locations: state.locations.filter(loc => loc.id !== action.id)
+            }
+        case types.EDIT_A_LOCATION:
+            return {
+                ...state,
+                locations: state.locations.filter(loc => {
+                    if (loc.location_id === action.payload.location_id) {
+                        return action.payload;
+                    }
+                })
             }
         default:
             return state;

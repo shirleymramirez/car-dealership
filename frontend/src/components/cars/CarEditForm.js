@@ -27,15 +27,16 @@ class CarEditForm extends Component {
     state = {
         editing: false,
         carToUpdate: {
-            vin: this.props.car[0].vin,
-            year: this.props.car[0].year,
-            make: this.props.car[0].make,
-            model: this.props.car[0].model,
-            miles: this.props.car[0].miles,
-            price: this.props.car[0].price,
-            photo_url: this.props.car[0].photo_url,
-            location_id: this.props.car[0].location_id
-        }
+            vin: this.props.car.vin,
+            year: this.props.car.year,
+            make: this.props.car.make,
+            model: this.props.car.model,
+            miles: this.props.car.miles,
+            price: this.props.car.price,
+            photo_url: this.props.car.photo_url,
+            location_id: this.props.car.location_id
+        },
+        fireRedirect: false
      }
 
     componentDidMount() {
@@ -54,11 +55,22 @@ class CarEditForm extends Component {
     handleSubmit = e => {
         e.preventDefault()
         this.props.editACar(this.props.car[0].car_id, this.state.carToUpdate)
+        this.setState({
+            fireRedirect: true,
+            vin: "",
+            year: "",
+            make: "",
+            model: "",
+            miles: "",
+            price: "",
+            photo_url: "",
+            location_id: ""
+        })
     }
 
     render() {
         console.log(this.props.car)
-        console.log(this.props.car[0].vin)
+        console.log(this.props.car.vin)
 
         return (
             <div>
@@ -166,6 +178,7 @@ class CarEditForm extends Component {
                             </FormGroup>
                             <Button type="submit" color="primary">Submit</Button>
                         </Form>
+                    {this.state.fireRedirect && this.props.history.push("/cars")}
                 </div>
             </div>
         )
@@ -175,7 +188,7 @@ class CarEditForm extends Component {
 const mapStateToProps = state => {
     console.log(state.cars.cars);
     return {
-        car: state.cars.cars
+        car: state.cars.cars[0]
     }
 }
 
